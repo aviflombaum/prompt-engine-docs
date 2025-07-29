@@ -7,6 +7,13 @@ export default function Layout({ children }: { children: ReactNode }) {
     <html
       lang="en"
       suppressHydrationWarning>
+      <head>
+        <script
+          defer
+          data-domain="prompt-engine-docs.avi.nyc"
+          src="https://a.wip.dev/js/script.js"
+        />
+      </head>
       <body className="flex flex-col min-h-screen">
         <RootProvider>{children}</RootProvider>
       </body>
