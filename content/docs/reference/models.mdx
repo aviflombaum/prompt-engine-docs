@@ -1,0 +1,91 @@
+---
+title: "Model Reference"
+description: "PromptEngine model documentation"
+icon: DatabaseIcon
+order: 1
+---
+
+# Understanding PromptEngine Models in Rails
+
+In this guide, we'll explore the core models used by the PromptEngine in a typical Rails application. Understanding these models is crucial for effectively managing and manipulating data within your application. We'll cover the `Prompt`, `PromptVersion`, and `Parameter` models, detailing their attributes, relationships, and key methods.
+
+## Model Overview
+
+<Callout type="info">
+  The PromptEngine architecture is designed to manage complex interactions and data flow, essential for applications requiring dynamic user input handling and version control of such inputs.
+</Callout>
+
+### Prompt Model
+
+The `Prompt` model is the central model representing a user input prompt in the system. It acts as the main interface for creating and managing dynamic prompts.
+
+<TypeTable>
+  <TypeTableRow name="id" type="integer" description="Unique identifier for the Prompt." />
+  <TypeTableRow name="title" type="string" description="Title of the prompt." />
+  <TypeTableRow name="created_at" type="datetime" description="Timestamp when the prompt was created." />
+  <TypeTableRow name="updated_at" type="datetime" description="Timestamp when the prompt was last updated." />
+</TypeTable>
+
+#### Key Methods
+
+- `current_version`: Returns the latest version of the prompt.
+- `revert_to(version)`: Reverts the prompt to a specified version.
+
+#### Relationships
+
+- Has many `PromptVersions`
+- Has many `Parameters` through `PromptVersions`
+
+### PromptVersion Model
+
+`PromptVersion` captures snapshots of the `Prompt` at various states, facilitating version control.
+
+<TypeTable>
+  <TypeTableRow name="id" type="integer" description="Unique identifier for the PromptVersion." />
+  <TypeTableRow name="prompt_id" type="integer" description="Foreign key to the associated prompt." />
+  <TypeTableRow name="content" type="text" description="Content of the prompt version." />
+  <TypeTableRow name="created_at" type="datetime" description="Timestamp when the version was captured." />
+  <TypeTableRow name="updated_at" type="datetime" description="Timestamp when the version was last updated." />
+</TypeTable>
+
+#### Relationships
+
+- Belongs to `Prompt`
+
+### Parameter Model
+
+The `Parameter` model defines variables that can be used within prompts to customize user interactions.
+
+<TypeTable>
+  <TypeTableRow name="id" type="integer" description="Unique identifier for the Parameter." />
+  <TypeTableRow name="name" type="string" description="Name of the parameter." />
+  <TypeTableRow name="data_type" type="string" description="Data type of the parameter (e.g., string, integer)." />
+  <TypeTableRow name="prompt_version_id" type="integer" description="Foreign key to the associated prompt version." />
+</TypeTable>
+
+#### Relationships
+
+- Belongs to `PromptVersion`
+
+## Working with PromptEngine Models
+
+<Steps>
+  <Step>
+    ### Step 1: Create a New Prompt
+    Use the Rails console or an administrative interface to create a new prompt, setting its title and initial content.
+  </Step>
+  <Step>
+    ### Step 2: Add Parameters
+    Define parameters relevant to the prompt in order to customize user interactions based on dynamic input.
+  </Step>
+  <Step>
+    ### Step 3: Manage Versions
+    Create snapshots of prompt versions whenever updates are made, ensuring you can revert to previous versions if necessary.
+  </Step>
+</Steps>
+
+<Callout type="tip">
+  Utilize the model methods like `current_version` and `revert_to` for efficient management of prompt states and versions.
+</Callout>
+
+Navigating through these elements efficiently will enhance your ability to manage dynamic content in your Rails applications, making your applications more robust and user-friendly.

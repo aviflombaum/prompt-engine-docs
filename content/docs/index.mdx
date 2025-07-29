@@ -1,13 +1,109 @@
 ---
-title: Hello World
-description: Your first document
+title: "PromptEngine Documentation"
+description: "Comprehensive documentation for PromptEngine - Rails engine for AI prompt management"
+order: 1
 ---
 
-Welcome to the docs! You can start writing documents in `/content/docs`.
+# What is PromptEngine?
 
-## What is Next?
+Welcome to PromptEngine - a powerful Rails engine for managing AI prompts with version control,
+testing, and optimization features built right in.
+
+<Callout type="info">
+  PromptEngine is designed to help teams manage their AI prompts without deploying code changes.
+  Create, version, test, and optimize prompts through an intuitive admin interface.
+</Callout>
+
+## Quick Start
 
 <Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
+  <Card
+    title="Installation"
+    description="Get PromptEngine up and running in 5 minutes"
+    href="/getting-started/installation"
+  />
+  <Card
+    title="Configuration"
+    description="Configure API keys and settings"
+    href="/getting-started/configuration"
+  />
+  <Card
+    title="First Prompt"
+    description="Create and test your first prompt"
+    href="/getting-started/quickstart"
+  />
+  <Card
+    title="Admin Interface"
+    description="Explore the web UI features"
+    href="/features/admin-interface"
+  />
+</Cards>
+
+## Core Features
+
+<Tabs defaultValue="prompts">
+  <TabsList>
+    <TabsTrigger value="prompts">Prompt Management</TabsTrigger>
+    <TabsTrigger value="versions">Version Control</TabsTrigger>
+    <TabsTrigger value="playground">Testing</TabsTrigger>
+    <TabsTrigger value="variables">Variables</TabsTrigger>
+  </TabsList>
+
+<TabsContent value="prompts">
+  Create and organize AI prompts with a powerful template system. Supports multiple AI providers
+  including OpenAI and Anthropic. - Organize prompts by category - Set system messages and model
+  configurations - Define reusable templates - Control prompt status (draft, active, archived)
+</TabsContent>
+
+<TabsContent value="versions">
+  Never lose a working prompt again. PromptEngine automatically versions every change with full
+  history tracking. - Automatic versioning on save - Compare versions side-by-side - One-click
+  restoration - Change descriptions for context
+</TabsContent>
+
+<TabsContent value="playground">
+  Test prompts with real AI providers before using them in production. See actual responses and
+  iterate quickly. - Live testing interface - Multiple model support - Token counting - Response
+  streaming
+</TabsContent>
+
+  <TabsContent value="variables">
+    Build dynamic prompts with variables that are automatically detected and validated. -{" "}
+    {`{{ variable }}`} syntax - Type inference and validation - Default values - Complex types (arrays,
+    JSON)
+  </TabsContent>
+</Tabs>
+
+## Why PromptEngine?
+
+Managing AI prompts in code is painful. Every change requires a deployment, testing is cumbersome,
+and non-technical team members can't contribute. PromptEngine solves these problems by providing:
+
+1. **Central Management** - All prompts in one place
+2. **Version Control** - Track changes and restore previous versions
+3. **Team Collaboration** - Non-technical users can manage prompts
+4. **Testing Tools** - Validate prompts before production
+5. **Rails Integration** - Works seamlessly with your Rails app
+
+## Architecture Overview
+
+PromptEngine is built as a Rails mountable engine, making it easy to integrate into any Rails
+application. It follows Rails conventions and best practices.
+
+## Next Steps
+
+Ready to get started? Check out our installation guide to add PromptEngine to your Rails
+application.
+
+<Cards>
+  <Card
+    title="Installation Guide"
+    description="Step-by-step installation instructions"
+    href="/getting-started/installation"
+  />
+  <Card
+    title="Rails Integration"
+    description="How to use prompts in your app"
+    href="/guides/rails-integration"
+  />
 </Cards>

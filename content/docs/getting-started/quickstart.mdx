@@ -1,0 +1,155 @@
+---
+title: "Getting Started"
+description: "Quick setup guide for PromptEngine"
+icon: RocketIcon
+order: 2
+---
+
+# Getting Started with PromptEngine
+
+This guide will help you get PromptEngine integrated into your Rails application quickly. You'll be managing AI prompts through a beautiful admin interface in just a few minutes.
+
+## Prerequisites
+
+<Callout type="info">
+  Before starting, ensure you have:
+  - Ruby 3.0 or higher
+  - Rails 8.0.2 or higher
+  - PostgreSQL or MySQL database
+  - API keys for OpenAI or Anthropic (for playground features)
+</Callout>
+
+## Quick Setup
+
+<Steps>
+  <Step>
+    ### Add PromptEngine to your Gemfile
+    
+    ```ruby
+    gem 'prompt_engine'
+    ```
+    
+    Then run bundle install to install the gem:
+    ```bash
+    bundle install
+    ```
+  </Step>
+  
+  <Step>
+    ### Mount the engine in your routes
+    
+    Add this line to your `config/routes.rb`:
+    
+    ```ruby
+    Rails.application.routes.draw do
+      mount PromptEngine::Engine => "/prompt_engine"
+      
+      # Your other routes...
+    end
+    ```
+    
+    This makes the admin interface available at `/prompt_engine` in your application.
+  </Step>
+  
+  <Step>
+    ### Install and run migrations
+    
+    Copy the engine's migrations to your application:
+    
+    ```bash
+    bin/rails prompt_engine:install:migrations
+    ```
+    
+    Then run the migrations:
+    
+    ```bash
+    bin/rails db:migrate
+    ```
+    
+    This creates the necessary tables for prompts, versions, and parameters.
+  </Step>
+  
+  <Step>
+    ### Configure API credentials
+    
+    PromptEngine needs API keys to test prompts in the playground. Edit your Rails credentials:
+    
+    ```bash
+    rails credentials:edit
+    ```
+    
+    Add your API keys:
+    
+    ```yaml
+    # For OpenAI
+    openai:
+      api_key: sk-your-openai-key
+      
+    # For Anthropic
+    anthropic:
+      api_key: sk-ant-your-anthropic-key
+    ```
+    
+    <Callout type="warning">
+      Keep your API keys secure! Never commit them to version control.
+    </Callout>
+  </Step>
+  
+  <Step>
+    ### Start your Rails server
+    
+    ```bash
+    rails server
+    ```
+    
+    Visit `http://localhost:3000/prompt_engine` to access the admin interface.
+  </Step>
+</Steps>
+
+## What's Next?
+
+Now that PromptEngine is installed, you're ready to create your first prompt!
+
+<Cards>
+  <Card 
+    title="Create Your First Prompt" 
+    description="Learn how to create and test a prompt"
+    href="/getting-started/quickstart" 
+  />
+  <Card 
+    title="Configure Settings" 
+    description="Customize PromptEngine for your needs"
+    href="/getting-started/configuration" 
+  />
+  <Card 
+    title="Explore the Admin UI" 
+    description="Tour of the admin interface features"
+    href="/features/admin-interface" 
+  />
+</Cards>
+
+## Troubleshooting
+
+<Accordions>
+  <Accordion title="Migrations are failing">
+    Ensure your database is created and accessible. You may need to run:
+    ```bash
+    rails db:create
+    ```
+    before running migrations.
+  </Accordion>
+  
+  <Accordion title="Can't access /prompt_engine">
+    1. Check that you've mounted the engine in routes.rb
+    2. Restart your Rails server after making route changes
+    3. Ensure you're using the correct port (usually 3000)
+  </Accordion>
+  
+  <Accordion title="Playground isn't working">
+    The playground requires API credentials. Make sure you've:
+    1. Added API keys to Rails credentials
+    2. Restarted your server after adding credentials
+    3. Have valid, active API keys
+  </Accordion>
+</Accordions>
+

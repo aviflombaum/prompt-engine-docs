@@ -1,0 +1,71 @@
+---
+title: "Version Control"
+description: "Automatic versioning and history tracking"
+icon: GitBranchIcon
+order: 4
+---
+
+# Understanding PromptEngine's Version Control System
+
+Version control is essential for managing changes to your application's source code over time. PromptEngine's version control system provides an automatic mechanism for tracking revisions, making it easier to manage updates, fix bugs, and collaborate with other developers.
+
+## How Automatic Versioning Works
+
+Every time you commit changes to your project, PromptEngine automatically increments the version number. This automated process ensures that every change set is tracked and uniquely identifiable, facilitating easier rollback and issue tracking.
+
+## Viewing Version History
+
+You can view the complete version history of your project through the PromptEngine dashboard. This allows you to see a timeline of changes, who made each change, and what changes were made.
+
+<Cards>
+  <Card title="Access Version History" description="Learn how to access the version history from your PromptEngine dashboard." href="/version-history" />
+</Cards>
+
+## Comparing Versions
+
+When you need to understand the differences between two versions, our version comparison tool comes in handy. Here's how you can utilize it:
+
+<Tabs items={['Text Comparison', 'Code Difference Viewer']}>
+  <Tab value="Text Comparison">
+    This tool allows you to see line-by-line changes in a simple text format, making it easy to identify what was added or removed.
+  </Tab>
+  <Tab value="Code Difference Viewer">
+    Ideal for code changes, this viewer highlights syntax changes and can filter out files that haven't changed, focusing on the modifications that matter.
+  </Tab>
+</Tabs>
+
+## Restoring Previous Versions
+
+If you need to revert to a previous version of your project, follow these steps:
+
+<Steps>
+  <Step>
+    ### Step 1: Locate the Version
+    Go to the Version History page on your PromptEngine dashboard and identify the version you want to restore.
+  </Step>
+  <Step>
+    ### Step 2: Select the Restore Option
+    Each version entry has a 'Restore' button. Click this button for the version you wish to revert to.
+  </Step>
+  <Step>
+    ### Step 3: Confirm Restoration
+    You'll be prompted to confirm your decision to prevent accidental restorations. Confirm to proceed with restoring the selected version.
+  </Step>
+</Steps>
+
+## Version Management Best Practices
+
+<Callout type="tip">
+  Regularly commit your changes to ensure that every modification is captured in the version history. This practice makes it easier to track down when specific changes were made.
+</Callout>
+
+<Accordions>
+  <Accordion title="Why Use Meaningful Commit Messages?">
+    Meaningful commit messages serve as a brief explanation of the changes made, which helps team members understand the purpose of each modification without reviewing the full code.
+  </Accordion>
+  <Accordion title="How to Handle Merge Conflicts">
+    When encountering merge conflicts, manually review the affected code sections and decide whether to keep your changes, accept incoming changes, or merge the two. Testing after resolving conflicts is crucial.
+  </Accordion>
+</Accordions>
+
+By following these guidelines and using PromptEngine's robust version control tools, your development process will be smoother and more manageable.

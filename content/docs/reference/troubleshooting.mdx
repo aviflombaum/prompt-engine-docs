@@ -1,0 +1,95 @@
+---
+title: Troubleshooting
+description: "Solutions to common problems"
+icon: AlertCircleIcon
+order: 3
+---
+
+Here's an MDX-based troubleshooting guide structured as a frequently asked questions (FAQ) section using the Fumadocs components for common issues encountered with PromptEngine:
+
+```mdx
+<Accordions>
+  <Accordion title="1. Installation Issues">
+    When installing PromptEngine, you might encounter several issues related to system compatibility, dependencies, or erroneous installation steps. Here are common symptoms and their solutions:
+
+    <Callout type="tip">
+      Always ensure your system meets the software requirements before installation to avoid common issues.
+    </Callout>
+
+    **Symptoms:**
+    - Error messages about missing libraries or files.
+    - Failure messages during the installation process.
+    - Inability to run the PromptEngine post-installation.
+
+    **Solutions:**
+    - Check the system requirements from the PromptEngine documentation.
+    - Install all required dependencies as listed in the `requirements.txt` file.
+    - Follow the installation guide step-by-step without skipping steps.
+  </Accordion>
+
+  <Accordion title="2. API Key Problems">
+    API key issues can prevent you from accessing PromptEngine's full capabilities. Here's how to resolve problems related to API keys:
+
+    **Symptoms:**
+    - Authentication errors when trying to use the API.
+    - Messages indicating invalid or expired API keys.
+
+    **Solutions:**
+    - Verify that the API key has been entered correctly without extra spaces or characters.
+    - Ensure the API key is still valid and has not expired. Renew or request a new API key if necessary.
+    - Check if the API key permissions align with the operations you are attempting to perform.
+  </Accordion>
+
+  <Accordion title="3. Database Errors">
+    Database connectivity issues can severely affect the performance and functionality of PromptEngine. Here's how to troubleshoot common database-related errors:
+
+    <Callout type="warning">
+      Incorrect database configurations can lead to data loss. Always backup your data before making significant changes to the database settings.
+    </Callout>
+
+    **Symptoms:**
+    - Error connecting to the database.
+    - Slow database queries affecting overall performance.
+    - Data retrieval issues.
+
+    **Solutions:**
+    - Ensure the database credentials in the configuration file are correct.
+    - Verify network connectivity if the database is hosted remotely.
+    - Optimize database queries and consider indexing vital columns to improve performance.
+  </Accordion>
+
+  <Accordion title="4. Performance Issues">
+    Performance problems can manifest in various ways, significantly impacting user experience. Here are common performance issues and their remedies:
+
+    **Symptoms:**
+    - Slow response times.
+    - High server load.
+    - Frequent timeouts during operations.
+
+    **Solutions:**
+    - Optimize your code to avoid unnecessary computations and database queries.
+    - Scale your server resources according to the load.
+    - Implement caching mechanisms where applicable to reduce the load on critical resources.
+  </Accordion>
+
+  <Accordion title="5. Common Mistakes">
+    Here are some frequent mistakes made by developers when working with PromptEngine and how to avoid them:
+
+    <Callout type="info">
+      Regularly reviewing and updating your implementation can prevent many common issues.
+    </Callout>
+
+    **Mistakes:**
+    - Overlooking the documentation and missing out on important implementation details.
+    - Hardcoding values that should be configurable or secure, like API keys or database credentials.
+    - Ignoring error logs or debugging information that can help diagnose issues early.
+
+    **Solutions:**
+    - Always refer to the official PromptEngine documentation when implementing or troubleshooting.
+    - Use environment variables for sensitive or environment-specific configurations.
+    - Regularly monitor logs and use debugging tools to stay informed about the system's state.
+  </Accordion>
+</Accordions>
+```
+
+This structure provides a clear and direct way to find solutions, making it accessible for Rails developers of all levels, and adheres to best practices in technical writing for troubleshooting guides.

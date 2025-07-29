@@ -1,0 +1,89 @@
+---
+title: "Configuration Reference"
+description: "Complete configuration options"
+icon: SettingsIcon
+order: 2
+---
+
+### Introduction to PromptEngine Configuration
+
+Understanding the configuration of the PromptEngine is essential for effectively customizing and optimizing the performance of your Rails applications. Configuration options allow you to tailor the behavior of the PromptEngine to meet specific requirements, enhancing both functionality and security.
+
+### Configuration Options Overview
+
+Below is a detailed list of all available configuration options for the PromptEngine, including their data types, default values, and descriptions. This will help you understand what can be configured and how these configurations impact the PromptEngine's behavior.
+
+<TypeTable>
+  <TypeTableRow name="cache_size" type="integer" description="Sets the maximum size of the cache in megabytes." />
+  <TypeTableRow name="enable_logging" type="boolean" description="Enables or disables logging of engine activities." />
+  <TypeTableRow name="log_level" type="string" description="Determines the logging level (e.g., debug, info, warn)." />
+  <TypeTableRow name="timeout" type="integer" description="Maximum time in seconds before a prompt times out." />
+  <TypeTableRow name="retry_attempts" type="integer" description="Number of retry attempts for failed prompts." />
+</TypeTable>
+
+### Environment Variables
+
+For configuring the PromptEngine through environment variables, use the following settings. Environment variables provide a secure and flexible way to manage configuration settings without hard-coding sensitive information.
+
+<TypeTable>
+  <TypeTableRow name="PROMPTENGINE_CACHE_SIZE" type="integer" description="Environment variable to set the cache size." />
+  <TypeTableRow name="PROMPTENGINE_ENABLE_LOGGING" type="boolean" description="Toggle logging through an environment variable." />
+  <TypeTableRow name="PROMPTENGINE_LOG_LEVEL" type="string" description="Set the logging level via environment variable." />
+  <TypeTableRow name="PROMPTENGINE_TIMEOUT" type="integer" description="Configure prompt timeout settings through environment." />
+  <TypeTableRow name="PROMPTENGINE_RETRY_ATTEMPTS" type="integer" description="Set retry attempts for failed prompts via environment variable." />
+</TypeTable>
+
+### Initializer Settings
+
+To configure your Rails application to use specific settings for the PromptEngine, you can set up an initializer file. Here's an example of how you might configure the PromptEngine within your Rails application:
+
+<FileTree>
+  <FileTree.Folder name="config" defaultOpen>
+    <FileTree.File name="initializers" defaultOpen>
+      <FileTree.File name="prompt_engine.rb" />
+    </FileTree.File>
+  </FileTree.Folder>
+</FileTree>
+
+```ruby
+# config/initializers/prompt_engine.rb
+PromptEngine.configure do |config|
+  config.cache_size = 50 # megabytes
+  config.enable_logging = true
+  config.log_level = 'info'
+  config.timeout = 30 # seconds
+  config.retry_attempts = 3
+end
+```
+
+### Default Values
+
+Understanding the default values of the PromptEngine configurations helps in deciding whether you need to explicitly set a value or if the default meets your needs.
+
+<TypeTable>
+  <TypeTableRow name="cache_size" type="integer" description="Default: 100 MB" />
+  <TypeTableRow name="enable_logging" type="boolean" description="Default: false" />
+  <TypeTableRow name="log_level" type="string" description="Default: 'warn'" />
+  <TypeTableRow name="timeout" type="integer" description="Default: 20 seconds" />
+  <TypeTableRow name="retry_attempts" type="integer" description="Default: 1" />
+</TypeTable>
+
+### Common Configuration Scenarios
+
+Let's explore some common scenarios and how to configure the PromptEngine to suit these needs.
+
+<Accordions>
+  <Accordion title="Maximizing Performance">
+    For performance-critical environments, consider increasing the cache size and reducing the timeout to ensure quick responses.
+  </Accordion>
+  <Accordion title="Debugging Issues">
+    If debugging issues, enable logging and set the log level to 'debug' to receive detailed logs about the engine's operation.
+  </Accordion>
+  <Accordion title="Handling High Load">
+    In high-load scenarios, it may be beneficial to increase retry attempts to handle transient errors more gracefully.
+  </Accordion>
+</Accordions>
+
+### Conclusion
+
+Configuring the PromptEngine correctly is vital to leverage its full potential and ensure your application runs smoothly and securely. Use the detailed configuration options provided to tailor the PromptEngine to your specific needs.

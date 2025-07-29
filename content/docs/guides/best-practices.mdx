@@ -1,0 +1,111 @@
+---
+title: "Best Practices"
+description: "Get the most out of PromptEngine"
+icon: LightbulbIcon
+order: 4
+---
+
+# Introduction to PromptEngine Best Practices
+
+Effective use of the PromptEngine in Rails applications can significantly enhance the application's responsiveness and user experience. This guide outlines best practices in prompt design, naming conventions, variable usage, testing strategies, and team collaboration. By following these guidelines, you can ensure that your prompts are efficient, maintainable, and scalable.
+
+<Cards>
+  <Card title="Prompt Design Principles" description="Learn the core principles for designing effective prompts" href="#prompt-design-principles" />
+  <Card title="Naming Conventions" description="Understand the best practices for naming prompts and related resources" href="#naming-conventions" />
+  <Card title="Variable Usage Patterns" description="Explore patterns for effective variable usage in prompts" href="#variable-usage-patterns" />
+  <Card title="Testing Strategies" description="Discover strategies for testing your prompts reliably" href="#testing-strategies" />
+  <Card title="Team Collaboration Tips" description="Tips for collaborating on prompt development projects" href="#team-collaboration-tips" />
+</Cards>
+
+## Prompt Design Principles
+
+Effective prompt design is crucial for creating intuitive and user-friendly interactions. Here are key principles to follow:
+
+<Steps>
+  <Step>
+    ### Clarity and Brevity
+    Ensure your prompts are clear and to the point. Avoid unnecessary information that might confuse the user.
+  </Step>
+  <Step>
+    ### Context Awareness
+    Design prompts that are aware of the user's current context and state within the application to provide relevant options or information.
+  </Step>
+  <Step>
+    ### User Control
+    Provide users with the control they need to make choices or to exit the prompt interaction at any time.
+  </Step>
+</Steps>
+
+<Callout type="tip">
+  Pro Tip: Always test your prompts with real users to ensure they are understandable and effective in various user scenarios.
+</Callout>
+
+## Naming Conventions
+
+Adopting consistent naming conventions is crucial for maintainability and clarity. Consider the following guidelines:
+
+<Steps>
+  <Step>
+    ### Use Descriptive Names
+    Use names that clearly describe the purpose of the prompt, making it easier for developers to understand the intent at a glance.
+  </Step>
+  <Step>
+    ### Prefixes and Suffixes
+    Use prefixes or suffixes to indicate the type of prompt or its relation to other components (e.g., `confirmOrder` or `alertLowStock`).
+  </Step>
+</Steps>
+
+<Callout type="info">
+  Consistent naming helps in faster debugging and easier code navigation, especially in large projects.
+</Callout>
+
+## Variable Usage Patterns
+
+Effective variable management can enhance prompt flexibility and reusability:
+
+<Steps>
+  <Step>
+    ### Minimize Scope
+    Limit the scope of variables as much as possible. Use local variables within prompts unless a broader scope is necessary.
+  </Step>
+  <Step>
+    ### Clear Naming
+    Name variables clearly and descriptively to indicate their usage and data type.
+  </Step>
+</Steps>
+
+## Testing Strategies
+
+Testing is critical to ensure the reliability and performance of your prompts:
+
+<Steps>
+  <Step>
+    ### Unit Testing
+    Write unit tests for each prompt to test its functionality in isolation.
+  </Step>
+  <Step>
+    ### Integration Testing
+    Conduct integration tests to ensure prompts work correctly when interacting with other application components.
+  </Step>
+</Steps>
+
+<Callout type="warning">
+  Always include error handling tests to manage unexpected user inputs or system states.
+</Callout>
+
+## Team Collaboration Tips
+
+Effective team collaboration can streamline the development process and improve the quality of the final product:
+
+<Steps>
+  <Step>
+    ### Code Reviews
+    Regularly conduct code reviews to ensure adherence to best practices and to foster knowledge sharing.
+  </Step>
+  <Step>
+    ### Documentation
+    Maintain thorough documentation for each prompt, including its purpose and usage examples.
+  </Step>
+</Steps>
+
+Developing effective prompts requires attention to detail, a clear understanding of user needs, and consistent practices across the development team. By adhering to these best practices, your team can build robust, user-friendly prompt systems that enhance the overall quality of your Rails applications.

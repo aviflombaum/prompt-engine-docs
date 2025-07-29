@@ -1,0 +1,119 @@
+---
+title: "Rails Integration"
+description: "Using PromptEngine in your Rails app"
+icon: PlugIcon
+order: 1
+---
+
+# Integrating PromptEngine into Rails Applications
+
+Understanding how to integrate PromptEngine into your Rails application can significantly enhance your application's dynamic content generation capabilities, offering more personalized and interactive user experiences. This guide will walk you through the basics of using PromptEngine in Rails controllers and models, loading prompts, rendering with variables, error handling, and implementing caching strategies.
+
+## Getting Started with PromptEngine
+
+PromptEngine allows you to dynamically generate text based on templates and variables. This can be particularly useful for applications requiring customized email messages, notifications, or any other form of dynamic content.
+
+### Setup and Installation
+
+Before integrating PromptEngine, ensure it is added to your Gemfile:
+
+```ruby
+gem 'prompt_engine'
+```
+
+Run `bundle install` to install the gem.
+
+## Basic Usage in Controllers and Models
+
+<Tabs items={['Controllers', 'Models']}>
+  <Tab value="Controllers">
+    In controllers, PromptEngine can be used to generate responses dynamically based on user interactions or data. Here's a basic example:
+
+    ```ruby
+    class UsersController < ApplicationController
+      def show
+        @user = User.find(params[:id])
+        @welcome_message = PromptEngine.render('welcome_template', { name: @user.name })
+      end
+    end
+    ```
+
+    This fetches the user and generates a personalized welcome message using a predefined prompt template.
+  </Tab>
+  <Tab value="Models">
+    In models, you might want to use PromptEngine to customize messages that are part of model methods. For instance:
+
+    ```ruby
+    class User < ApplicationRecord
+      def welcome_message
+        PromptEngine.render('welcome_template', { name: name })
+      end
+    end
+    ```
+    
+    This method allows any instance of the User model to generate a personalized welcome message.
+  </Tab>
+</Tabs>
+
+## Loading Prompts by Name
+
+Prompt templates can be stored in the database, files, or even remote locations. Here’s how you can load a prompt by name:
+
+```ruby
+prompt_content = PromptEngine.load_prompt('email_template')
+```
+
+This method retrieves the content of a prompt named `email_template` from the default storage location configured for PromptEngine.
+
+## Rendering with Variables
+
+<Callout type="tip">
+  Utilizing variables in your prompts allows for highly flexible and dynamic content generation tailored to specific scenarios and data.
+</Callout>
+
+Here’s how to render a prompt with variables:
+
+```ruby
+user_info = { name: "John Doe", age: 28 }
+message = PromptEngine.render('user_info_template', user_info)
+```
+
+This will replace placeholders in the `user_info_template` with the respective values in `user_info`.
+
+## Error Handling
+
+Handling errors in PromptEngine is crucial to prevent application crashes due to missing or incorrect templates:
+
+```ruby
+begin
+  message = PromptEngine.render('non_existent_template', {})
+rescue PromptEngine::TemplateNotFoundError => e
+  puts "Template not found: #{e.message}"
+rescue => e
+  puts "An error occurred: #{e.message}"
+end
+```
+
+This code attempts to render a non-existent template and gracefully handles the error by logging it.
+
+## Caching Strategies
+
+Caching prompt render outputs can significantly improve performance, especially for prompts that are used frequently but change infrequently.
+
+<Callout type="info">
+  Implementing caching with Rails cache store can reduce the load on your database or file system by storing prompt outputs temporarily.
+</Callout>
+
+Here’s a basic example of caching a prompt output:
+
+```ruby
+def cached_user_greeting(user)
+  Rails.cache.fetch("user_greeting_#{user.id}", expires_in: 12.hours) do
+    PromptEngine.render('greeting_template', { name: user.name })
+  end
+end
+```
+
+This method uses Rails caching to store the output of the `greeting_template` for each user, reducing the number of times the template needs to be rendered.
+
+By following these guidelines, you can effectively integrate and utilize PromptEngine in your Rails applications to enhance dynamic content generation.
