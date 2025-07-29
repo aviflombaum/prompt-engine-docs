@@ -6,7 +6,8 @@
     "build": "next build",
     "dev": "next dev --turbo",
     "start": "next start",
-    "postinstall": "fumadocs-mdx"
+    "postinstall": "fumadocs-mdx && ./scripts/install-lightningcss.sh || true",
+    "install:lightningcss": "./scripts/install-lightningcss.sh"
   },
   "dependencies": {
     "@ai-sdk/openai": "^1.3.23",
@@ -45,9 +46,12 @@
     "typescript": "^5.8.3"
   },
   "optionalDependencies": {
-    "lightningcss-linux-x64-gnu": "^1.25.1",
-    "lightningcss-linux-x64-musl": "^1.25.1",
-    "lightningcss-darwin-x64": "^1.25.1",
-    "lightningcss-darwin-arm64": "^1.25.1"
+    "lightningcss-linux-x64-gnu": "1.25.1",
+    "lightningcss-linux-x64-musl": "1.25.1",
+    "lightningcss-linux-arm64-gnu": "1.25.1",
+    "lightningcss-linux-arm64-musl": "1.25.1",
+    "lightningcss-darwin-x64": "1.25.1",
+    "lightningcss-darwin-arm64": "1.25.1",
+    "lightningcss-win32-x64-msvc": "1.25.1"
   }
 }
