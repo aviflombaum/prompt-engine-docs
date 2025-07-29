@@ -5,56 +5,81 @@ icon: VariableIcon
 order: 5
 ---
 
+import { TypeTable } from 'fumadocs-ui/components/type-table';
+
 # Understanding the Variable System in PromptEngine
 
-The variable system in PromptEngine is designed to simplify the integration of dynamic content within your templates, making your development process more efficient and flexible. Here we will explore how variables are used, automatically detected, and validated within the engine.
+The variable system in PromptEngine is designed to simplify the integration of dynamic content
+within your templates, making your development process more efficient and flexible. Here we will
+explore how variables are used, automatically detected, and validated within the engine.
 
 ## Variable Syntax
 
 Variables in PromptEngine are identified using the double curly braces syntax:
 
-```{{variable_name}}```
+```
+{{variable_name}}
+```
 
 <Callout type="tip">
-This syntax allows you to quickly insert variables anywhere in your text templates in a readable and easy-to-manage way.
+  This syntax allows you to quickly insert variables anywhere in your text templates in a readable
+  and easy-to-manage way.
 </Callout>
 
 ## Automatic Parameter Detection
 
-PromptEngine automatically detects variables within templates and lists them as parameters that need to be supplied. This feature ensures that you do not miss any required data when rendering templates.
+PromptEngine automatically detects variables within templates and lists them as parameters that need
+to be supplied. This feature ensures that you do not miss any required data when rendering
+templates.
 
 ## Type Inference and Validation
 
-PromptEngine infers the data type of variables based on initial input and validates data types on subsequent uses. This helps in maintaining consistency and reliability in data handling.
+PromptEngine infers the data type of variables based on initial input and validates data types on
+subsequent uses. This helps in maintaining consistency and reliability in data handling.
 
-<TypeTable>
-  <TypeTableRow name="string" type="String" description="Handles text-based input." />
-  <TypeTableRow name="number" type="Integer/Float" description="Accepts numerical values, both integers and floats." />
-  <TypeTableRow name="date" type="Date" description="Requires date format input." />
-</TypeTable>
+<TypeTable
+  type={{
+    string: {
+      type: 'String',
+      description: 'Handles text-based input.'
+    },
+    number: {
+      type: 'Integer/Float',
+      description: 'Accepts numerical values, both integers and floats.'
+    },
+    date: {
+      type: 'Date',
+      description: 'Requires date format input.'
+    }
+  }}
+/>
 
 ## Using Complex Types
 
 Handling complex data types such as arrays and JSON objects is crucial for modern applications.
 
-<Tabs items={['Arrays', 'JSON']}>
+<Tabs items={["Arrays", "JSON"]}>
   <Tab value="Arrays">
-    Arrays can be used to pass a list of values. Use syntax like `{{variable_name}}` where `variable_name` is an array.
+    Arrays can be used to pass a list of values. Use syntax like `{{ variable_name }}` where
+    `variable_name` is an array.
     <Callout type="info">
-      Example: `{{user_ids}}` might represent multiple user IDs passed to the engine.
+      Example: `{{ user_ids }}` might represent multiple user IDs passed to the engine.
     </Callout>
   </Tab>
   <Tab value="JSON">
-    JSON objects allow for structured data inputs. They need to be properly formatted as JSON strings.
+    JSON objects allow for structured data inputs. They need to be properly formatted as JSON
+    strings.
     <Callout type="info">
-      Example: `{{user_details}}` could be a JSON object containing user properties like name and email.
+      Example: `{{ user_details }}` could be a JSON object containing user properties like name and
+      email.
     </Callout>
   </Tab>
 </Tabs>
 
 ## Default Values and Optional Parameters
 
-You can define variables with default values or mark them as optional, enhancing template flexibility and error handling.
+You can define variables with default values or mark them as optional, enhancing template
+flexibility and error handling.
 
 <Steps>
   <Step>
@@ -73,4 +98,6 @@ You can define variables with default values or mark them as optional, enhancing
   </Step>
 </Steps>
 
-This documentation should provide a clear understanding of how to effectively use the variable system in PromptEngine, ensuring you leverage its full potential to create dynamic, robust templates for your applications.
+This documentation should provide a clear understanding of how to effectively use the variable
+system in PromptEngine, ensuring you leverage its full potential to create dynamic, robust templates
+for your applications.

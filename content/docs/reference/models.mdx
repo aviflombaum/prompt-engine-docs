@@ -5,6 +5,8 @@ icon: DatabaseIcon
 order: 1
 ---
 
+import { TypeTable } from 'fumadocs-ui/components/type-table';
+
 # Understanding PromptEngine Models in Rails
 
 In this guide, we'll explore the core models used by the PromptEngine in a typical Rails application. Understanding these models is crucial for effectively managing and manipulating data within your application. We'll cover the `Prompt`, `PromptVersion`, and `Parameter` models, detailing their attributes, relationships, and key methods.
@@ -19,12 +21,26 @@ In this guide, we'll explore the core models used by the PromptEngine in a typic
 
 The `Prompt` model is the central model representing a user input prompt in the system. It acts as the main interface for creating and managing dynamic prompts.
 
-<TypeTable>
-  <TypeTableRow name="id" type="integer" description="Unique identifier for the Prompt." />
-  <TypeTableRow name="title" type="string" description="Title of the prompt." />
-  <TypeTableRow name="created_at" type="datetime" description="Timestamp when the prompt was created." />
-  <TypeTableRow name="updated_at" type="datetime" description="Timestamp when the prompt was last updated." />
-</TypeTable>
+<TypeTable
+  type={{
+    id: {
+      type: 'integer',
+      description: 'Unique identifier for the Prompt.'
+    },
+    title: {
+      type: 'string',
+      description: 'Title of the prompt.'
+    },
+    created_at: {
+      type: 'datetime',
+      description: 'Timestamp when the prompt was created.'
+    },
+    updated_at: {
+      type: 'datetime',
+      description: 'Timestamp when the prompt was last updated.'
+    }
+  }}
+/>
 
 #### Key Methods
 
@@ -40,13 +56,30 @@ The `Prompt` model is the central model representing a user input prompt in the 
 
 `PromptVersion` captures snapshots of the `Prompt` at various states, facilitating version control.
 
-<TypeTable>
-  <TypeTableRow name="id" type="integer" description="Unique identifier for the PromptVersion." />
-  <TypeTableRow name="prompt_id" type="integer" description="Foreign key to the associated prompt." />
-  <TypeTableRow name="content" type="text" description="Content of the prompt version." />
-  <TypeTableRow name="created_at" type="datetime" description="Timestamp when the version was captured." />
-  <TypeTableRow name="updated_at" type="datetime" description="Timestamp when the version was last updated." />
-</TypeTable>
+<TypeTable
+  type={{
+    id: {
+      type: 'integer',
+      description: 'Unique identifier for the PromptVersion.'
+    },
+    prompt_id: {
+      type: 'integer',
+      description: 'Foreign key to the associated prompt.'
+    },
+    content: {
+      type: 'text',
+      description: 'Content of the prompt version.'
+    },
+    created_at: {
+      type: 'datetime',
+      description: 'Timestamp when the version was captured.'
+    },
+    updated_at: {
+      type: 'datetime',
+      description: 'Timestamp when the version was last updated.'
+    }
+  }}
+/>
 
 #### Relationships
 
@@ -56,12 +89,26 @@ The `Prompt` model is the central model representing a user input prompt in the 
 
 The `Parameter` model defines variables that can be used within prompts to customize user interactions.
 
-<TypeTable>
-  <TypeTableRow name="id" type="integer" description="Unique identifier for the Parameter." />
-  <TypeTableRow name="name" type="string" description="Name of the parameter." />
-  <TypeTableRow name="data_type" type="string" description="Data type of the parameter (e.g., string, integer)." />
-  <TypeTableRow name="prompt_version_id" type="integer" description="Foreign key to the associated prompt version." />
-</TypeTable>
+<TypeTable
+  type={{
+    id: {
+      type: 'integer',
+      description: 'Unique identifier for the Parameter.'
+    },
+    name: {
+      type: 'string',
+      description: 'Name of the parameter.'
+    },
+    data_type: {
+      type: 'string',
+      description: 'Data type of the parameter (e.g., string, integer).'
+    },
+    prompt_version_id: {
+      type: 'integer',
+      description: 'Foreign key to the associated prompt version.'
+    }
+  }}
+/>
 
 #### Relationships
 

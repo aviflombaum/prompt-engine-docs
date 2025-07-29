@@ -5,57 +5,41 @@ icon: SettingsIcon
 order: 4
 ---
 
+import { TypeTable } from 'fumadocs-ui/components/type-table';
+import { File, Folder, Files } from 'fumadocs-ui/components/files';
+
 # Configuration
 
-PromptEngine offers flexible configuration options through Rails credentials, initializers, and environment variables. This guide covers all configuration options to customize PromptEngine for your needs.
+PromptEngine offers flexible configuration options through Rails credentials, initializers, and
+environment variables. This guide covers all configuration options to customize PromptEngine for
+your needs.
 
 ## API Provider Credentials
 
 <Callout type="warning">
-  API credentials are required for the playground feature. Without them, you can still manage prompts but won't be able to test them.
+  API credentials are required for the playground feature. Without them, you can still manage
+  prompts but won't be able to test them.
 </Callout>
 
 ### Setting up credentials
 
-<Tabs items={['Rails Credentials', 'Environment Variables']}>
+<Tabs items={["Rails Credentials", "Environment Variables"]}>
   <Tab value="Rails Credentials">
-    The recommended approach is using Rails encrypted credentials:
-    
-    ```bash
-    rails credentials:edit
-    ```
-    
-    Add your API keys:
-    
-    ```yaml
-    # OpenAI Configuration
-    openai:
-      api_key: sk-your-openai-key
-      organization_id: org-optional-org-id  # Optional
-      
-    # Anthropic Configuration  
-    anthropic:
-      api_key: sk-ant-your-anthropic-key
-    ```
-    
+    The recommended approach is using Rails encrypted credentials: ```bash rails credentials:edit
+    ``` Add your API keys: ```yaml # OpenAI Configuration openai: api_key: sk-your-openai-key
+    organization_id: org-optional-org-id # Optional # Anthropic Configuration anthropic: api_key:
+    sk-ant-your-anthropic-key ```
     <Callout type="info">
-      You only need to configure the providers you plan to use. Having both configured gives you more flexibility in the playground.
+      You only need to configure the providers you plan to use. Having both configured gives you
+      more flexibility in the playground.
     </Callout>
   </Tab>
-  
+
   <Tab value="Environment Variables">
-    Alternatively, use environment variables:
-    
-    ```bash
-    # OpenAI
-    export OPENAI_API_KEY="sk-your-openai-key"
-    export OPENAI_ORGANIZATION_ID="org-optional-org-id"
-    
-    # Anthropic
-    export ANTHROPIC_API_KEY="sk-ant-your-anthropic-key"
-    ```
-    
-    Add these to your `.env` file in development or set them in your production environment.
+    Alternatively, use environment variables: ```bash # OpenAI export
+    OPENAI_API_KEY="sk-your-openai-key" export OPENAI_ORGANIZATION_ID="org-optional-org-id" #
+    Anthropic export ANTHROPIC_API_KEY="sk-ant-your-anthropic-key" ``` Add these to your `.env` file
+    in development or set them in your production environment.
   </Tab>
 </Tabs>
 
@@ -68,22 +52,22 @@ For advanced configuration, create an initializer:
 PromptEngine.configure do |config|
   # Default AI model for playground
   config.default_model = "gpt-4"
-  
+
   # Feature toggles
   config.enable_playground = true
   config.enable_versioning = true
   config.enable_parameter_validation = true
-  
+
   # Authentication and authorization
   config.require_authentication = true
   config.admin_role = :admin
   config.auth_method = :devise  # or :custom
-  
+
   # Limits and defaults
   config.max_prompt_length = 10_000
   config.max_versions_per_prompt = 100
   config.default_temperature = 0.7
-  
+
   # Caching
   config.cache_responses = true
   config.cache_ttl = 1.hour
@@ -92,75 +76,69 @@ end
 
 ### Configuration Options
 
-<TypeTable>
-  <TypeTableRow 
-    name="default_model" 
-    type="string" 
-    default="gpt-4" 
-    description="Default AI model for playground testing" 
-  />
-  <TypeTableRow 
-    name="enable_playground" 
-    type="boolean" 
-    default="true" 
-    description="Enable/disable the playground feature" 
-  />
-  <TypeTableRow 
-    name="require_authentication" 
-    type="boolean" 
-    default="false" 
-    description="Require authentication to access admin interface" 
-  />
-  <TypeTableRow 
-    name="admin_role" 
-    type="symbol" 
-    default=":admin" 
-    description="Role required for admin access" 
-  />
-  <TypeTableRow 
-    name="max_prompt_length" 
-    type="integer" 
-    default="10000" 
-    description="Maximum characters allowed in a prompt" 
-  />
-  <TypeTableRow 
-    name="cache_responses" 
-    type="boolean" 
-    default="false" 
-    description="Cache AI responses in playground" 
-  />
-</TypeTable>
+<TypeTable
+  type={{
+    default_model: {
+      type: 'string',
+      default: 'gpt-4',
+      description: 'Default AI model for playground testing'
+    },
+    enable_playground: {
+      type: 'boolean',
+      default: 'true',
+      description: 'Enable/disable the playground feature'
+    },
+    require_authentication: {
+      type: 'boolean',
+      default: 'false',
+      description: 'Require authentication to access admin interface'
+    },
+    admin_role: {
+      type: 'symbol',
+      default: ':admin',
+      description: 'Role required for admin access'
+    },
+    max_prompt_length: {
+      type: 'integer',
+      default: '10000',
+      description: 'Maximum characters allowed in a prompt'
+    },
+    cache_responses: {
+      type: 'boolean',
+      default: 'false',
+      description: 'Cache AI responses in playground'
+    }
+  }}
+/>
 
 ## Environment Variables
 
 PromptEngine respects these environment variables:
 
-<TypeTable>
-  <TypeTableRow 
-    name="PROMPT_ENGINE_API_TIMEOUT" 
-    type="integer" 
-    default="30" 
-    description="Timeout for API requests in seconds" 
-  />
-  <TypeTableRow 
-    name="PROMPT_ENGINE_MAX_TOKENS" 
-    type="integer" 
-    default="4000" 
-    description="Maximum tokens per API request" 
-  />
-  <TypeTableRow 
-    name="PROMPT_ENGINE_LOG_LEVEL" 
-    type="string" 
-    default="info" 
-    description="Logging level (debug, info, warn, error)" 
-  />
-  <TypeTableRow 
-    name="PROMPT_ENGINE_ASYNC_JOBS" 
-    type="boolean" 
-    default="false" 
-    description="Use background jobs for API calls" 
-  />
-</TypeTable>
+<TypeTable
+  type={{
+    PROMPT_ENGINE_API_TIMEOUT: {
+      type: 'integer',
+      default: '30',
+      description: 'Timeout for API requests in seconds'
+    },
+    PROMPT_ENGINE_MAX_TOKENS: {
+      type: 'integer',
+      default: '4000',
+      description: 'Maximum tokens per API request'
+    },
+    PROMPT_ENGINE_LOG_LEVEL: {
+      type: 'string',
+      default: 'info',
+      description: 'Logging level (debug, info, warn, error)'
+    },
+    PROMPT_ENGINE_ASYNC_JOBS: {
+      type: 'boolean',
+      default: 'false',
+      description: 'Use background jobs for API calls'
+    }
+  }}
+/>
 
 ## Database Requirements
 
@@ -215,9 +193,7 @@ PromptEngine is designed to work with standard Rails databases:
 
 ## Security Considerations
 
-<Callout type="error">
-  Never expose your API keys in client-side code or version control!
-</Callout>
+<Callout type="error">Never expose your API keys in client-side code or version control!</Callout>
 
 ### Best Practices
 
@@ -274,15 +250,14 @@ PromptEngine is designed to work with standard Rails databases:
 With PromptEngine configured, you're ready to start creating prompts!
 
 <Cards>
-  <Card 
-    title="Create Your First Prompt" 
+  <Card
+    title="Create Your First Prompt"
     description="Learn the basics of prompt management"
-    href="/getting-started/quickstart" 
+    href="/getting-started/quickstart"
   />
-  <Card 
-    title="Authentication Guide" 
+  <Card
+    title="Authentication Guide"
     description="Secure your PromptEngine installation"
-    href="/guides/authentication" 
+    href="/guides/authentication"
   />
 </Cards>
-
