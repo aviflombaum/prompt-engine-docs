@@ -4,12 +4,6 @@ import { baseOptions } from "@/app/layout.config";
 import { source } from "@/lib/source";
 import { HomeLayout } from "fumadocs-ui/layouts/home";
 import Link from "next/link";
-import {
-  NavbarMenu,
-  NavbarMenuContent,
-  NavbarMenuLink,
-  NavbarMenuTrigger,
-} from "fumadocs-ui/layouts/home/navbar";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (

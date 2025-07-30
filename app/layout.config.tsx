@@ -1,5 +1,3 @@
-import { BookIcon } from 'lucide-react';
-
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 
 /**
