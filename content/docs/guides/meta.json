@@ -1,7 +1,5 @@
 {
   "pages": [
     "rendering-prompts",
-    "llm-integration",
-    "prompt-best-practices"
-  ]
+    "llm-integration"  ]
 }
