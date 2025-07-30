@@ -1,0 +1,104 @@
+---
+title: "Rendering Prompts"
+description: "How to use the prompts from PromptEngine within your Rails Application"
+icon: PlugIcon
+order: 1
+---
+
+Once you create prompts in PromptEngine, you will want to be able to use them within your Rails application anytime you want to send them to an LLM provider.
+
+PromptEngine can be used with any LLM client, RubyLLM, OpenAI Ruby, and more, including your own clients.
+
+## Rendering Prompts
+
+<Callout type="tip">
+  <b>Tip:</b> PromptEngine lets you render prompts with dynamic variables and runtime options, so you can personalize content and control LLM settings on the fly.
+</Callout>
+
+Whenever you want to use a prompt from PromptEngine, you'll load it and create a rendered version. This fills in any variables required by the prompt and lets you pass options to your LLM client—such as model, temperature, or even which version or status of the prompt to use.
+
+### Method Signature
+
+```ruby
+PromptEngine.render(slug, variables = {}, options: {})
+```
+
+#### Parameters
+
+1. **slug** (String) - Required positional argument
+   - The unique identifier for the prompt to render
+
+2. **variables** (Hash) - Optional positional argument, defaults to `{}`
+   - Variables to interpolate in the prompt template
+   - These are the values that replace `{{variable_name}}` in your prompts
+
+3. **options:** (Hash) - Optional keyword argument, defaults to `{}`
+   - Rendering configuration options:
+     - `:status` - Filter by prompt status ('draft', 'active', 'archived'), defaults to 'active'
+     - `:model` - Override the prompt's default model
+     - `:temperature` - Override the prompt's default temperature
+     - `:max_tokens` - Override the prompt's default max_tokens
+     - `:version` - Load a specific version number
+
+### Rendering with Variables
+
+    Render a prompt and fill in variables (defaults to active prompts):
+
+    ```ruby
+    rendered = PromptEngine.render(
+      "customer-support",
+      { customer_name: "John", issue: "Can't login to my account" }
+    )
+    ```
+    This will replace placeholders in the `{{customer-support}}` prompt with the values you provide.
+
+### Rendering with Prompt Options
+  
+ Render a prompt and override LLM options by passing a keyword argument `options` expecting a `Hash`.
+
+    ```ruby
+    rendered = PromptEngine.render(
+      "email-writer",
+      options: { model: "gpt-4-turbo", temperature: 0.9 }
+    )
+    ```
+
+    Useful for customizing the LLM model or temperature at runtime.
+
+### Rendering with Variables and Options
+
+ To render a prompt that has variables and to override LLM options use:
+
+    ```ruby
+    rendered = PromptEngine.render(
+      "email-writer",
+      { customer_name: "John", issue: "Can't login to my account" }
+      options: { model: "gpt-4-turbo", temperature: 0.9 }
+    )
+    ```
+
+  Notice that the second argument is a hash of the variables, not a keyword argument.
+
+### Rendering a Different Version of a Prompt
+
+```ruby
+rendered = PromptEngine.render("archived-prompt",
+  { text: "Hello" },
+  options: { version: 2 }
+)
+```
+
+This will load version 2 of the prompt.
+
+### Rendered Prompt Properties
+
+Each instance of a rendered prompt (`PromptEngine::RenderedPrompt`) exposes its properties and configurations.
+
+- `content`: The rendered prompt content
+- `system_message`: The system message (if any)
+- `model`: The AI model to use
+- `temperature`: The temperature setting
+- `max_tokens`: The max tokens setting
+- `options` - Returns a copy of the options hash used for rendering
+- `status` - Returns the status (from options if provided, otherwise prompt's current status)
+- `version` - Returns the version number

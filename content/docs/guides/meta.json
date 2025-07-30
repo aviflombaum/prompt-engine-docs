@@ -1,6 +1,7 @@
 {
   "pages": [
-    "usage",
+    "rendering-prompts",
+    "llm-integration",
     "prompt-best-practices"
   ]
 }

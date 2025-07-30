@@ -1,0 +1,9 @@
+{
+  "pages": [
+    "admin-interface",
+    "prompt-management",
+    "variables",
+    "playground",
+    "versioning"
+  ]
+}
