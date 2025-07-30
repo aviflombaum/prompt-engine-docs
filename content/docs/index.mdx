@@ -6,13 +6,10 @@ order: 1
 
 # What is PromptEngine?
 
-Welcome to PromptEngine - a powerful Rails engine for managing AI prompts with version control,
-testing, and optimization features built right in.
-
-<Callout type="info">
-  PromptEngine is designed to help teams manage their AI prompts without deploying code changes.
-  Create, version, test, and optimize prompts through an intuitive admin interface.
-</Callout>
+Welcome to PromptEngine - a powerful Rails engine for managing the AI prompts your application uses.
+Sick of hardcoding your prompts in your code so that every time you want to update them, you have to
+change your code and deploy? PromptEngine solves this by giving you an admin interface to make your
+prompts, store them in a database, and load them when you need them.
 
 ## Quick Start
 
@@ -38,6 +35,17 @@ testing, and optimization features built right in.
     href="/features/admin-interface"
   />
 </Cards>
+
+## Why PromptEngine?
+
+Managing AI prompts in code is painful. Every change requires a deployment, testing is cumbersome,
+and non-technical team members can't contribute. PromptEngine solves these problems by providing:
+
+1. **Central Management** - All prompts in one place
+2. **Version Control** - Track changes and restore previous versions
+3. **Team Collaboration** - Non-technical users can manage prompts
+4. **Testing Tools** - Validate prompts before production
+5. **Rails Integration** - Works seamlessly with your Rails app
 
 ## Core Features
 
@@ -74,22 +82,6 @@ testing, and optimization features built right in.
   </TabsContent>
 </Tabs>
 
-## Why PromptEngine?
-
-Managing AI prompts in code is painful. Every change requires a deployment, testing is cumbersome,
-and non-technical team members can't contribute. PromptEngine solves these problems by providing:
-
-1. **Central Management** - All prompts in one place
-2. **Version Control** - Track changes and restore previous versions
-3. **Team Collaboration** - Non-technical users can manage prompts
-4. **Testing Tools** - Validate prompts before production
-5. **Rails Integration** - Works seamlessly with your Rails app
-
-## Architecture Overview
-
-PromptEngine is built as a Rails mountable engine, making it easy to integrate into any Rails
-application. It follows Rails conventions and best practices.
-
 ## Next Steps
 
 Ready to get started? Check out our installation guide to add PromptEngine to your Rails
@@ -99,7 +91,7 @@ application.
   <Card
     title="Installation Guide"
     description="Step-by-step installation instructions"
-    href="/getting-started/installation"
+    href="/docs/installation"
   />
   <Card
     title="Rails Integration"

@@ -1,0 +1,135 @@
+---
+title: "Installation"
+description: "How to install PromptEngine into your Rails Application"
+icon: RocketIcon
+order: 1
+---
+
+# Getting Started with PromptEngine
+
+This guide will help you get PromptEngine integrated into your Rails application quickly. You'll be managing AI prompts through a beautiful admin interface in just a few minutes.
+
+## Prerequisites
+
+<Callout type="info">
+Before starting, ensure you have:  
+  - Ruby 3.0 or higher
+  - Rails 7+ (currently PromptEngine has been tested with Rails 8+)
+  - API keys for OpenAI or Anthropic (for playground features)
+</Callout>
+
+## Quick Setup
+
+<Steps>
+  <Step>
+    ### Add PromptEngine to your Gemfile
+    
+    ```bash
+    bundle add prompt_engine
+    ```
+
+    ```ruby
+    gem 'prompt_engine'
+    ```
+    
+    _You can also use `prompt_engine` from the [GitHub Source](http://github.com/aviflombaum/prompt_engine/) as the gem is in very active development._
+
+    ```ruby
+    gem "prompt_engine", git: "https://github.com/aviflombaum/prompt_engine.git"
+    ```
+
+    Then run bundle install to install the gem:
+    ```bash
+    bundle install
+    ```
+  </Step>
+
+  <Step>
+    ### Install and run migrations
+    
+    Install the migrations from the gem by running:
+    
+    ```bash
+    bin/rails prompt_engine:install:migrations
+    ```
+    
+    You will see the migrations copied to your `db/migrations`.
+
+    Then run the migrations:
+    
+    ```bash
+    bin/rails db:migrate
+    ```
+    
+    This creates the necessary tables for prompts, versions, and parameters.
+  </Step>
+
+  <Step>
+    ### Mount the engine in your routes
+    
+    Add this line to your `config/routes.rb`:
+    
+    ```ruby
+    Rails.application.routes.draw do
+      mount PromptEngine::Engine => "/prompt_engine"
+      
+      # Your other routes...
+    end
+    ```
+    
+    This makes the admin interface available at `/prompt_engine` in your application.
+  </Step>
+  
+  <Step>
+    ### Configure API credentials
+    
+    Currently, PromptEngine only needs your LLM provider's API key to run Test Runs of your Prompts in the Playground. You will be able to supply an API Key when you run a test or you can save your API Keys in the PromptEngine Setting Page where they will be stored and **encrypted** in the database.
+
+    <Callout type="info">
+      In a future release, you will be able to piggyback off where you normally might store your LLM provider's keys, such as in your Rails Credentials files or your `ENV`.
+    </Callout>
+    
+    <Callout type="warning">
+      Keep your API keys secure! Never commit them to version control.
+    </Callout>
+  </Step>
+  
+  <Step>
+    ### Start your Rails server
+    
+    ```bash
+    rails server
+    ```
+    
+    Visit `http://localhost:3000/prompt_engine` to access the admin interface.
+
+    <figure>
+      <img src="/images/dashboard.jpeg" alt="Dashboard screenshot" style={{ borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.08)', maxWidth: '100%' }} />
+      <figcaption style={{ textAlign: 'center', marginTop: '0.5em', color: '#666' }}>
+        <b>Dashboard</b>
+      </figcaption>
+    </figure>
+  </Step>
+</Steps>
+
+## What's Next?
+
+Now that PromptEngine is installed, you're ready to create your first prompt!
+
+<Cards>
+  <Card 
+    title="Create Your First Prompt" 
+    description="Learn how to create and test a prompt"
+    href="/getting-started/quickstart" 
+  />
+  <Card 
+    title="Configure Settings" 
+    description="Customize PromptEngine for your needs"
+    href="/getting-started/configuration" 
+  />
+  <Card 
+    title="Explore the Admin UI" 
+    description="Tour of the admin interface features"
+    href="/features/admin-interface" 
+  />
+</Cards>

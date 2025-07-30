@@ -2,46 +2,14 @@
 title: Configuration
 description: "Complete configuration guide for PromptEngine"
 icon: SettingsIcon
-order: 4
+order: 3
 ---
-
-import { TypeTable } from 'fumadocs-ui/components/type-table';
-import { File, Folder, Files } from 'fumadocs-ui/components/files';
 
 # Configuration
 
 PromptEngine offers flexible configuration options through Rails credentials, initializers, and
 environment variables. This guide covers all configuration options to customize PromptEngine for
 your needs.
-
-## API Provider Credentials
-
-<Callout type="warning">
-  API credentials are required for the playground feature. Without them, you can still manage
-  prompts but won't be able to test them.
-</Callout>
-
-### Setting up credentials
-
-<Tabs items={["Rails Credentials", "Environment Variables"]}>
-  <Tab value="Rails Credentials">
-    The recommended approach is using Rails encrypted credentials: ```bash rails credentials:edit
-    ``` Add your API keys: ```yaml # OpenAI Configuration openai: api_key: sk-your-openai-key
-    organization_id: org-optional-org-id # Optional # Anthropic Configuration anthropic: api_key:
-    sk-ant-your-anthropic-key ```
-    <Callout type="info">
-      You only need to configure the providers you plan to use. Having both configured gives you
-      more flexibility in the playground.
-    </Callout>
-  </Tab>
-
-  <Tab value="Environment Variables">
-    Alternatively, use environment variables: ```bash # OpenAI export
-    OPENAI_API_KEY="sk-your-openai-key" export OPENAI_ORGANIZATION_ID="org-optional-org-id" #
-    Anthropic export ANTHROPIC_API_KEY="sk-ant-your-anthropic-key" ``` Add these to your `.env` file
-    in development or set them in your production environment.
-  </Tab>
-</Tabs>
 
 ## Initializer Configuration
 
@@ -50,13 +18,6 @@ For advanced configuration, create an initializer:
 ```ruby
 # config/initializers/prompt_engine.rb
 PromptEngine.configure do |config|
-  # Default AI model for playground
-  config.default_model = "gpt-4"
-
-  # Feature toggles
-  config.enable_playground = true
-  config.enable_versioning = true
-  config.enable_parameter_validation = true
 
   # Authentication and authorization
   config.require_authentication = true
